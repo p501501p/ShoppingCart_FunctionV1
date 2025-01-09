@@ -175,85 +175,89 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int total = 0;
-            int cash = 0;
-            try
-            {
 
-                cash = int.Parse(Cash.Text);
+       
+                int total = 0;
+                int cash = 0;
+                try
+                {
 
+                    cash = int.Parse(Cash.Text);
+
+                }
+                catch (FormatException) { }
+
+                try
+                {
+                    total = int.Parse(Total.Text);
+                }
+                catch (FormatException) { }
+                int change = cash - total;
+                Change.Text = change.ToString();
+
+                int OneT = 0;
+                int FiveH = 0;
+                int oneH = 0;
+                int fifty = 0;
+                int twenty = 0;
+                int ten = 0;
+                int five = 0;
+                int one = 0;
+                while (change > 0)
+                {
+                    if (change >= 1000)
+                    {
+                        change -= 1000;
+                        OneT++;
+                    }
+                    else if (change >= 500)
+                    {
+                        change -= 500;
+                        FiveH++;
+                    }
+                    else if (change >= 100)
+                    {
+                        change -= 100;
+                        oneH++;
+                    }
+                    else if (change >= 50)
+                    {
+                        change -= 50;
+                        fifty++;
+                    }
+                    else if (change >= 20)
+                    {
+                        change -= 20;
+                        twenty++;
+                    }
+                    else if (change >= 10)
+                    {
+                        change -= 10;
+                        ten++;
+                    }
+                    else if (change >= 5)
+                    {
+                        change -= 5;
+                        five++;
+                    }
+                    else if (change >= 1)
+                    {
+                        change -= 1;
+                        one++;
+                    }
+                }
+
+                OneThousand.Text = OneT.ToString();
+                FiveHundred.Text = FiveH.ToString();
+                OneHundred.Text = oneH.ToString();
+                Fifty.Text = fifty.ToString();
+                Twenty.Text = twenty.ToString();
+                Ten.Text = ten.ToString();
+                Five.Text = five.ToString();
+                One.Text = one.ToString();
             }
-            catch (FormatException) { }
 
-            try
-            {
-                total = int.Parse(Total.Text);
-            }
-            catch (FormatException) { }
-            int change = cash - total;
-            Change.Text = change.ToString();
-
-            int OneT = 0;
-            int FiveH = 0;
-            int oneH = 0;
-            int fifty = 0;
-            int twenty = 0;
-            int ten = 0;
-            int five = 0;
-            int one = 0;
-            while (change > 0)
-            {
-                if (change >= 1000)
-                {
-                    change -= 1000;
-                    OneT++;
-                }
-                else if (change >= 500)
-                {
-                    change -= 500;
-                    FiveH++;
-                }
-                else if (change >= 100)
-                {
-                    change -= 100;
-                    oneH++;
-                }
-                else if (change >= 50)
-                {
-                    change -= 50;
-                    fifty++;
-                }
-                else if (change >= 20)
-                {
-                    change -= 20;
-                    twenty++;
-                }
-                else if (change >= 10)
-                {
-                    change -= 10;
-                    ten++;
-                }
-                else if (change >= 5)
-                {
-                    change -= 5;
-                    five++;
-                }
-                else if (change >= 1)
-                {
-                    change -= 1;
-                    one++;
-                }
-            }
-            OneThousand.Text = OneT.ToString();
-            FiveHundred.Text = FiveH.ToString();
-            OneHundred.Text = oneH.ToString();
-            Fifty.Text = fifty.ToString();
-            Twenty.Text = twenty.ToString();
-            Ten.Text = ten.ToString();
-            Five.Text = five.ToString();
-            One.Text = one.ToString();
-
-        }
+ 
 
         private void Tea_check_CheckedChanged(object sender, EventArgs e)
         {
@@ -291,7 +295,7 @@ namespace WinFormsApp1
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (Discount_Drink.Checked == true)
+            if (Discount_Drink.Checked )
             {
                 Discount_All.Checked = false;
                 Discount_Food.Checked = false;
